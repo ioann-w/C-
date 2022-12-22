@@ -1,5 +1,6 @@
 ﻿/*
-Напишите программу, которая на вход принимает позиции элемента в двумерном массиве, и возвращает значение этого элемента или же указание, что такого элемента нет.
+Напишите программу, которая на вход принимает позиции элемента в двумерном массиве, и возвращает значение этого элемента или же указание, 
+что такого элемента нет.
 
 Например, задан массив:
 
@@ -12,35 +13,45 @@
 17 -> такого числа в массиве нет
 */
 
-/*
-Console.WriteLine("Позиция элемента в массиве имеет формат [x,y]");
-Console.Write("Введите x: ");
-var x = Convert.ToInt32(Console.ReadLine());
-Console.Write("Введите y: ");
-var y = Convert.ToInt32(Console.ReadLine());
+Console.Clear();
 
-int[,] arr = {
-    {1, 4, 7, 2},
-    {5, 9, 2, 3},
-    {8, 4, 2, 4}
-};
+Console.Write("Введите количество строк в массиве: ");
+var a = Convert.ToInt32(Console.ReadLine()?? "");
 
-Console.WriteLine("Распечатка массива: ");
-for (int i = 0; i < arr.GetLength(0); i++)
+Console.Write("Введите количество столбцов в массиве: ");
+var b = Convert.ToInt32(Console.ReadLine()?? "");
+
+int[,] arr = new int[a, b];
+Random rnd = new ();
+
+for (int i = 0; i < a; i++)
+    {
+        for (int j = 0; j < b; j++)
+        {
+            arr[i, j] = rnd.Next(0, 10);
+        }
+    }
+
+Console.WriteLine("Массив сгенерирован: ");
+
+for (int i = 0; i < a; i++)
 {
-    for (int j = 0; j < arr.GetLength(1); j++)
-        Console.Write(String.Format("{0,2:0.#}", arr[i, j]));
+    for (int j = 0; j < b; j++)
+        Console.Write($"  {arr[i, j]}  ");
     Console.WriteLine();
 }
 
-if ((x >= arr.GetLength(0)) || (y >= arr.GetLength(1)) || (x < 0) || (y < 0))
+Console.Write("Введите позицию строки: ");
+var x = Convert.ToInt32(Console.ReadLine()?? "");
+
+Console.Write("Введите позицию стобца: ");
+var y = Convert.ToInt32(Console.ReadLine()?? "");
+
+if ((x >= arr.GetLength(0)) || (y >= arr.GetLength(1)))
 {
     Console.WriteLine($"Элемента с позицией [{x},{y}] в массиве нет.");
     return;
 }
 
 Console.WriteLine($"Элемент с позицией [{x},{y}] имеет значение {arr[x,y]}.");
-*/
-
-Console.Clear();
 
