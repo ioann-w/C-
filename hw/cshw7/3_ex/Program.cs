@@ -8,41 +8,51 @@
 Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
 */
 
-/*
-int[,] arr = {
-    {1, 4, 7, 2},
-    {5, 9, 2, 3},
-    {8, 4, 2, 4}
-};
-var dim0 = arr.GetLength(0);
-var dim1 = arr.GetLength(1);
+Console.Clear();
 
-int[] colSums = new int[dim1];
+Console.Write("Введите количество строк в массиве: ");
+var a = Convert.ToInt32(Console.ReadLine()?? "");
 
-for (int i = 0; i < dim0; i++)
+Console.Write("Введите количество столбцов в массиве: ");
+var b = Convert.ToInt32(Console.ReadLine()?? "");
+
+int[,] arr = new int[a, b];
+Random rnd = new ();
+
+for (int i = 0; i < a; i++)
+    {
+        for (int j = 0; j < b; j++)
+        {
+            arr[i, j] = rnd.Next(0, 10);
+        }
+    }
+
+Console.WriteLine("Массив сгенерирован: ");
+
+for (int i = 0; i < a; i++)
 {
-    for (int j = 0; j < dim1; j++)
-        colSums[j] += arr[i,j];
-}
-
-Console.WriteLine("Распечатка массива: ");
-for (int i = 0; i < dim0; i++)
-{
-    for (int j = 0; j < dim1; j++)
-        Console.Write(String.Format("{0,5:0.#}", arr[i, j]));
+    for (int j = 0; j < b; j++)
+        Console.Write($" {arr[i, j]}   ");
     Console.WriteLine();
 }
 
-for (int i = 0; i < dim1; i++)
-    Console.Write("-----");
+var rows = arr.GetLength(0);
+var columns = arr.GetLength(1);
+
+int [] columnsSum = new int[columns];
+
+for (int i = 0; i < rows; i++)
+{
+    for (int j = 0; j < columns; j++)
+        columnsSum[j] += arr[i,j];
+}
+
+for (int i = 0; i < columns; i++)
+    Console.Write("=====");
 Console.WriteLine();
 
-for (int i = 0; i < dim1; i++)
-    Console.Write(String.Format("{0,5:0.##}", (double)colSums[i] / dim0));
-Console.Write(" <= среднее арифмитическое для столбца");
+for (int i = 0; i < columns; i++)
+    Console.Write($" {(double)columnsSum[i] / rows} ");
+Console.Write(" Среднее арифметическое каждого столбца");
 Console.WriteLine();
 Console.WriteLine();
-*/
-
-Console.Clear();
-
