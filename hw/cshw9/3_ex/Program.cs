@@ -4,27 +4,27 @@ m = 2, n = 3 -> A(m,n) = 9
 m = 3, n = 2 -> A(m,n) = 29
 */
 
-/*
-Console.Write("Введите m: ");
-var str = Console.ReadLine() ?? "";
-var m = int.Parse(str);
-Console.Write("Введите n: ");
-str = Console.ReadLine() ?? "";
-var n = int.Parse(str);
 
-static int Ack(int n, int m)
+Console.Clear();
+
+Console.Write("Задайте значение M: ");
+var val = Console.ReadLine() ?? "";
+var M = int.Parse(val);
+Console.Write("Задайте значение N: ");
+val = Console.ReadLine() ?? "";
+var N = int.Parse(val);
+
+int fAc(int N, int M)
 {
-    while (n != 0)
+    while (N != 0)
     {
-        if (m == 0)
-            m = 1;
+        if (M == 0)
+            M = 1;
         else
-            m = Ack(n, m - 1);
-        n--;
+            M = fAc(N, M - 1);
+        N--;
     }
-    return m + 1;
+    return M + 1;
 }
 
-Console.WriteLine($"Функция Аккермана, где m = {m}, n = {n} равна: " + Ack(m, n));
-*/
-
+Console.WriteLine($"Вычисления функции Аккермана({M},{N}) = " + fAc(M, N));
