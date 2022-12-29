@@ -7,37 +7,58 @@
 10 09 08 07
 */
 
-/*
-static void PrintArray(int[,] arr)
+Console.Clear();
+
+int[,] GetArr(int a, int b)
+{
+    int[,] arr = new int[a, b];
+    
+    int n = 1;
+    int q = 0;
+
+    while (n <= a * b)
+    {
+        for (int j = q; j < b - q; j++)
+        {
+            int i = q;
+            arr[i, j] = n;
+            n++;
+        }
+        if(n > a*b) break;
+        for (int i = 1 + q; i < a - q; i++)
+        {
+            int j = (b - 1) - q;
+            arr[i, j] = n;
+            n++;
+        }
+        for (int j = (b - 2) - q; j >= 0 + q; j--)
+        {
+            int i = (a - 1) - q;
+            arr[i, j] = n;
+            n++;
+        }
+        for (int i = (a - 2) - q; i > 0 + q; i--)
+        {
+            int j = q;
+            arr[i, j] = n;
+            n++;
+        }
+        q++;
+    }
+    return arr;
+}
+
+void PrintArray(int[,] arr)
 {
     for (int i = 0; i < arr.GetLength(0); i++)
     {
         for (int j = 0; j < arr.GetLength(1); j++)
-            Console.Write(String.Format("{0,4:00.#}", arr[i, j]));
+            Console.Write($"{arr[i, j]}\t");
         Console.WriteLine();
     }
 }
 
-int side = 4;
-
-int[,] arr = new int[side, side];
-int idx = 0;
-
-for (int x = 0; (x <= side / 2); x++)
-{
-    for (int i = x; i < side - x; i++)
-        arr[x, i] = ++idx;
-
-    for (int i = x + 1; i < side - x; i++)
-        arr[i, side - 1 - x] = ++idx;
-
-    for (int i = side - 2 - x; i >= 0 + x; i--)
-        arr[side - 1 - x, i] = ++idx;
-
-    for (int i = side - 2 - x; i > 0 + x; i--)
-        arr[i, x] = ++idx;
-}
-
-PrintArray(arr);
-*/
-
+int a = 10;
+int b = 5;
+int[,] newArray = GetArr(a, b);
+PrintArray(newArray);
