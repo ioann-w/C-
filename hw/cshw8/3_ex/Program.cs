@@ -59,3 +59,62 @@ Console.WriteLine("Результат произведения матриц:");
 PrintArray(MultArrays(arr0, arr1));
 */
 
+Console.Clear();
+
+int [,] GetArr(int rows, int columns)  
+{ 
+    Random rnd = new Random(); 
+    int [,] arr = new int [rows,columns]; 
+    for (int i = 0; i < arr.GetLength(0); i++) 
+        for (int j = 0; j < arr.GetLength(1); j++) 
+            arr[i,j] = rnd.Next(0, 5); 
+    return arr;    
+} 
+
+void PrintArray (int [,] arr) 
+{ 
+    for (int i = 0; i < arr.GetLength(0); i++) 
+    { 
+        for (int j = 0; j < arr.GetLength(1); j++) 
+            Console.Write($"{arr[i,j]}\t"); 
+    Console.WriteLine();     
+    }  
+} 
+
+int [,] ResultArr(int [,] fArr, int [,] sArr)
+{
+    int a = fArr.GetLength(0);
+    int b = sArr.GetLength(1);
+    int c = fArr.GetLength(1);
+    int [,] arr = new int [a, b];
+
+    for (int i = 0; i < a; i++)
+    {
+        for (int j = 0; j < b; j++)
+        {
+            arr[i, j] = 0;
+            for (int k = 0; k < c; k++)
+            {
+                arr[i, j] += fArr[i, k] * sArr[k, j];
+            }
+        }
+    }
+    
+
+
+    return arr;
+}
+
+
+
+int a = 2; 
+int b = 4; 
+int [,] fArr = GetArr(a,b); 
+int [,] sArr = GetArr(b,a); 
+Console.WriteLine("Матрица 1:");
+PrintArray(fArr);
+Console.WriteLine("Матрица 2:");
+PrintArray(sArr);
+Console.WriteLine("Произведение Матрицы:");
+int [,] newArray = ResultArr(fArr, sArr);
+PrintArray(newArray);
