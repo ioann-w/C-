@@ -5,19 +5,18 @@ N = 5 -> "5, 4, 3, 2, 1"
 N = 8 -> "8, 7, 6, 5, 4, 3, 2, 1"
 */
 
-/*
-Console.Write("Введите N: ");
-var str = Console.ReadLine() ?? "";
+Console.Clear();
 
-var N = int.Parse(str);
+int N = 10;
 
-static void DownFrom(int n)
+void Nums (int N)
 {
-    if (n == 0) return;
-    Console.Write($"{n--}" + (n != 0 ? ", " : ""));
-    DownFrom(n);
+    if(N == 1) Console.Write( 1);
+    else 
+    {
+        Console.Write(N + ", ");
+        Nums(N - 1);
+    }
 }
 
-DownFrom(N);
-*/
-
+Nums(N);
